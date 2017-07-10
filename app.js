@@ -448,11 +448,130 @@ var todoList = {
 
 //***REFACTORING CLICK FUNCTIONS INTO AN OBJECT***
 
+// var handlers = {
+//   displayTodos: function() {
+//     todoList.displayTodos();
+//   },
+//   toggleAll: function() {
+//     todoList.toggleAll();
+//   }
+// };
+
+//***It should have working controls for .addTodo***
+
+// var handlers = {
+//   displayTodos: function() {
+//     todoList.displayTodos();
+//   },
+//   toggleAll: function() {
+//     todoList.toggleAll();
+//   },
+//   addTodo: function() {
+//     var addTodoTextInput = document.getElementById("addTodoTextInput");
+//     todoList.addTodo(addTodoTextInput.value);
+//     addTodoTextInput.value = '';
+//   }
+// };
+
+//***It should have working controls for .changeTodo***
+// var handlers = {
+//   displayTodos: function() {
+//     todoList.displayTodos();
+//   },
+//   toggleAll: function() {
+//     todoList.toggleAll();
+//   },
+//   addTodo: function() {
+//     var addTodoTextInput = document.getElementById("addTodoTextInput");
+//     todoList.addTodo(addTodoTextInput.value);
+//     addTodoTextInput.value = "";
+//   },
+//   changeTodo: function() {
+//     var changeTodoPositionInput = document.getElementById(
+//       "changeTodoPositionInput"
+//     );
+//     var changeTodoTextInput = document.getElementById("changeTodoTextInput");
+//     todoList.changeTodo(
+//       changeTodoPositionInput.valueAsNumber,
+//       changeTodoTextInput.value
+//     );
+//     changeTodoPositionInput.value = "";
+//     changeTodoTextInput.value = "";
+//   }
+// };
+
+//***It should have working controls for .deleteTodo***
+
+// var handlers = {
+//   displayTodos: function() {
+//     todoList.displayTodos();
+//   },
+//   toggleAll: function() {
+//     todoList.toggleAll();
+//   },
+//   addTodo: function() {
+//     var addTodoTextInput = document.getElementById("addTodoTextInput");
+//     todoList.addTodo(addTodoTextInput.value);
+//     addTodoTextInput.value = "";
+//   },
+//   changeTodo: function() {
+//     var changeTodoPositionInput = document.getElementById(
+//       "changeTodoPositionInput"
+//     );
+//     var changeTodoTextInput = document.getElementById("changeTodoTextInput");
+//     todoList.changeTodo(
+//       changeTodoPositionInput.valueAsNumber,
+//       changeTodoTextInput.value
+//     );
+//     changeTodoPositionInput.value = "";
+//     changeTodoTextInput.value = "";
+//   },
+//   deleteTodo: function() {
+//     var deleteTodoPositionInput = document.getElementById("deleteTodoPositionInput");
+//     todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
+//     deleteTodoPositionInput.value = "";
+//   }
+// };
+
+//***It should have working controls for .toggleCompleted***
+
 var handlers = {
   displayTodos: function() {
     todoList.displayTodos();
+  },
+  addTodo: function() {
+    var addTodoTextInput = document.getElementById("addTodoTextInput");
+    todoList.addTodo(addTodoTextInput.value);
+    addTodoTextInput.value = "";
+  },
+  changeTodo: function() {
+    var changeTodoPositionInput = document.getElementById(
+      "changeTodoPositionInput"
+    );
+    var changeTodoTextInput = document.getElementById("changeTodoTextInput");
+    todoList.changeTodo(
+      changeTodoPositionInput.valueAsNumber,
+      changeTodoTextInput.value
+    );
+    changeTodoPositionInput.value = "";
+    changeTodoTextInput.value = "";
+  },
+  deleteTodo: function() {
+    var deleteTodoPositionInput = document.getElementById(
+      "deleteTodoPositionInput"
+    );
+    todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
+    deleteTodoPositionInput.value = "";
+  },
+  toggleCompleted: function() {
+    var toggleCompletedPositionInput = document.getElementById(
+      "toggleCompletedPositionInput"
+    );
+    todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber);
+    toggleCompletedPositionInput.value = "";
   },
   toggleAll: function() {
     todoList.toggleAll();
   }
 };
+//////////////END LESSON//////////////
