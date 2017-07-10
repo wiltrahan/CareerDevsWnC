@@ -425,3 +425,34 @@ var todoList = {
   }
 };
 //////////////END LESSON//////////////
+
+//***lesson 7 HTML AND THE DOM***
+
+//Get access to display todos button
+//run displayTodos method when someone clicks display button
+
+// var displayTodosButton = document.getElementById("displayTodosButton");
+
+// displayTodosButton.addEventListener("click", function() {
+//   todoList.displayTodos();
+// });
+
+// var toggleAllButton = document.getElementById("toggleAllButton");
+
+// toggleAllButton.addEventListener("click", function() {
+//   todoList.toggleAll();
+// });
+//////////////END LESSON//////////////
+
+//***lesson 8 GETTING DATA FROM INPUTS***
+
+//***REFACTORING CLICK FUNCTIONS INTO AN OBJECT***
+
+var handlers = {
+  displayTodos: function() {
+    todoList.displayTodos();
+  },
+  toggleAll: function() {
+    todoList.toggleAll();
+  }
+};
