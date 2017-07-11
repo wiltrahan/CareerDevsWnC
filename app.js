@@ -536,12 +536,8 @@ var handlers = {
     changeTodoTextInput.value = "";
     view.displayTodos();
   },
-  deleteTodo: function() {
-    var deleteTodoPositionInput = document.getElementById(
-      "deleteTodoPositionInput"
-    );
-    todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
-    deleteTodoPositionInput.value = "";
+  deleteTodo: function(position) {
+    todoList.deleteTodo(position);
     view.displayTodos();
   },
   toggleCompleted: function() {
@@ -591,6 +587,151 @@ var handlers = {
 
 //***Each li element should show .completed***
 
+// var view = {
+//   displayTodos: function() {
+//     var todosUl = document.querySelector("ul");
+//     todosUl.innerHTML = "";
+//     for (var i = 0; i < todoList.todos.length; i++) {
+//       var todoLi = document.createElement("li");
+//       var todo = todoList.todos[i];
+//       var todoTextWithCompletion = "";
+
+//       if (todo.completed === true) {
+//         todoTextWithCompletion = "(X) " + todo.todoText;
+//       } else {
+//         todoTextWithCompletion = "( ) " + todo.todoText;
+//       }
+//       todoLi.textContent = todoTextWithCompletion;
+//       todosUl.appendChild(todoLi);
+//     }
+//   }
+// };
+//////////////END LESSON//////////////
+
+//lesson 10 ***CLICK TO DELETE***
+
+// ***THERE SHOULD BE A WAY TO CREATE DELETE BUTTONS***
+
+// var view = {
+//   displayTodos: function() {
+//     var todosUl = document.querySelector("ul");
+//     todosUl.innerHTML = "";
+//     for (var i = 0; i < todoList.todos.length; i++) {
+//       var todoLi = document.createElement("li");
+//       var todo = todoList.todos[i];
+//       var todoTextWithCompletion = "";
+
+//       if (todo.completed === true) {
+//         todoTextWithCompletion = "(X) " + todo.todoText;
+//       } else {
+//         todoTextWithCompletion = "( ) " + todo.todoText;
+//       }
+//       todoLi.textContent = todoTextWithCompletion;
+//       todosUl.appendChild(todoLi);
+//     }
+//   },
+//   createDeleteButton: function() {
+//     var deleteButton = document.createElement('button');
+//     deleteButton.textContent = 'Delete';
+//     deleteButton.className = 'deleteButton';
+//     return deleteButton;
+//   }
+// };
+
+//***THERE SHOULD BE A DELETE BUTTON FOR EACH TODO***
+// var view = {
+//   displayTodos: function() {
+//     var todosUl = document.querySelector("ul");
+//     todosUl.innerHTML = "";
+//     for (var i = 0; i < todoList.todos.length; i++) {
+//       var todoLi = document.createElement("li");
+//       var todo = todoList.todos[i];
+//       var todoTextWithCompletion = "";
+
+//       if (todo.completed === true) {
+//         todoTextWithCompletion = "(X) " + todo.todoText;
+//       } else {
+//         todoTextWithCompletion = "( ) " + todo.todoText;
+//       }
+
+//       todoLi.textContent = todoTextWithCompletion;
+//       todoLi.appendChild(this.createDeleteButton());
+//       todosUl.appendChild(todoLi);
+//     }
+//   },
+//   createDeleteButton: function() {
+//     var deleteButton = document.createElement("button");
+//     deleteButton.textContent = "Delete";
+//     deleteButton.className = "deleteButton";
+//     return deleteButton;
+//   }
+// };
+//***EACH LI SHOULD HAVE AN ID THAT HAS THE TODO POSITION***
+// var view = {
+//   displayTodos: function() {
+//     var todosUl = document.querySelector("ul");
+//     todosUl.innerHTML = "";
+//     for (var i = 0; i < todoList.todos.length; i++) {
+//       var todoLi = document.createElement("li");
+//       var todo = todoList.todos[i];
+//       var todoTextWithCompletion = "";
+
+//       if (todo.completed === true) {
+//         todoTextWithCompletion = "(X) " + todo.todoText;
+//       } else {
+//         todoTextWithCompletion = "( ) " + todo.todoText;
+//       }
+
+//       todoLi.id = i;
+//       todoLi.textContent = todoTextWithCompletion;
+//       todoLi.appendChild(this.createDeleteButton());
+//       todosUl.appendChild(todoLi);
+//     }
+//   },
+//   createDeleteButton: function() {
+//     var deleteButton = document.createElement("button");
+//     deleteButton.textContent = "Delete";
+//     deleteButton.className = "deleteButton";
+//     return deleteButton;
+//   }
+// };
+//***DELETE BUTTONS SHOULD HAVE ACCESS TO THE TODO ID***
+// var view = {
+//   displayTodos: function() {
+//     var todosUl = document.querySelector("ul");
+//     todosUl.innerHTML = "";
+//     for (var i = 0; i < todoList.todos.length; i++) {
+//       var todoLi = document.createElement("li");
+//       var todo = todoList.todos[i];
+//       var todoTextWithCompletion = "";
+
+//       if (todo.completed === true) {
+//         todoTextWithCompletion = "(X) " + todo.todoText;
+//       } else {
+//         todoTextWithCompletion = "( ) " + todo.todoText;
+//       }
+
+//       todoLi.id = i;
+//       todoLi.textContent = todoTextWithCompletion;
+//       todoLi.appendChild(this.createDeleteButton());
+//       todosUl.appendChild(todoLi);
+//     }
+//   },
+//   createDeleteButton: function() {
+//     var deleteButton = document.createElement("button");
+//     deleteButton.textContent = "Delete";
+//     deleteButton.className = "deleteButton";
+//     return deleteButton;
+//   }
+// };
+
+// var todosUl = document.querySelector('ul');
+
+// todosUl.addEventListener('click', function() {
+//   console.log(event.target.parentNode.id);
+// });
+
+//***CLICKING DELETE SHOULD UPDATE TODOLIST.TODOS AND THE DOM***
 var view = {
   displayTodos: function() {
     var todosUl = document.querySelector("ul");
@@ -605,8 +746,29 @@ var view = {
       } else {
         todoTextWithCompletion = "( ) " + todo.todoText;
       }
+
+      todoLi.id = i;
       todoLi.textContent = todoTextWithCompletion;
+      todoLi.appendChild(this.createDeleteButton());
       todosUl.appendChild(todoLi);
     }
+  },
+  createDeleteButton: function() {
+    var deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.className = "deleteButton";
+    return deleteButton;
+  },
+  setUpEventListeners: function() {
+    var todosUl = document.querySelector("ul");
+
+    todosUl.addEventListener("click", function() {
+      var elementClicked = event.target;
+      if (elementClicked.className === "deleteButton") {
+        handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
+      }
+    });
   }
 };
+view.setUpEventListeners();
+//////////////END LESSON//////////////
